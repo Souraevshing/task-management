@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { Status } from '../model/task.model';
-import { User } from 'src/auth/users/user.entity';
+import { User } from '../../auth/users/user.entity';
 import { Exclude } from 'class-transformer';
 
 // @Entity annotation to tell orm that Task is an entity or table for db having columns using @Column
