@@ -17,8 +17,8 @@ import { GetTaskDto } from './dto/get-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entity/task.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/auth/decorators/get-user.decorator';
-import { User } from 'src/auth/users/user.entity';
+import { GetUser } from '../auth/decorators/get-user.decorator';
+import { User } from '../auth/users/user.entity';
 
 // controller with prefix all url as 'api/v1/tasks'
 // securing all routes with auth.module.ts
