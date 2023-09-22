@@ -22,9 +22,7 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-<p align="center">
-  <a href="https://task-management-nestapp.up.railway.app/" target="blank"><img src="https://devicons.railway.app/i/nestjs.svg" width="20" height="20" alt="nestjs-app" />Task Management App</a>
-</p>
+# [Task Management App](https://task-management-nestapp.up.railway.app/)
 
 ## Backend application developed on [Nest](https://github.com/nestjs/nest)
 
