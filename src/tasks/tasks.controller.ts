@@ -19,11 +19,13 @@ import { Task } from './entity/task.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../auth/decorators/get-user.decorator';
 import { User } from '../auth/users/user.entity';
+import { ApiBearerAuth, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 // controller with prefix all url as 'api/v1/tasks'
 // securing all routes with auth.module.ts
 
 // GetUser() custom decorator is used to fetch current logged in user so that only logged in user will be able to perform CRUD operations
+@ApiTags('Tasks')
 @Controller('api/v1/tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
@@ -32,6 +34,8 @@ export class TasksController {
   constructor(private taskService: TasksService) {}
 
   // @Query to filter and search tasks based on status or search passed as query inside url
+  @ApiOperation({ summary: 'Get all Tasks' })
+  @ApiBearerAuth()
   @Get()
   getAllTasks(
     @Query() getTaskDto: GetTaskDto,
@@ -43,6 +47,8 @@ export class TasksController {
   }
 
   // @Body used to send req body having body as CreateTaskDto
+  @ApiOperation({ summary: 'Create Task' })
+  @ApiBearerAuth()
   @Post()
   addTask(
     @Body()
@@ -55,6 +61,8 @@ export class TasksController {
   }
 
   // @Param used to send query parameters inside url
+  @ApiOperation({ summary: 'Get Task by id' })
+  @ApiBearerAuth()
   @Get('/:id')
   getTaskById(@Param('id') id: string, @GetUser() user: User): Promise<Task> {
     this.logger.verbose(`User ${user.username}`);
@@ -62,6 +70,8 @@ export class TasksController {
     return this.taskService.getTaskById(id, user);
   }
 
+  @ApiOperation({ summary: 'Delete Task' })
+  @ApiBearerAuth()
   @Delete('/:id')
   deleteTaskById(
     @Param('id') id: string,
@@ -72,6 +82,8 @@ export class TasksController {
     return this.taskService.deleteTaskById(id, user);
   }
 
+  @ApiOperation({ summary: 'Update Task' })
+  @ApiBearerAuth()
   @Patch('/:id/status')
   updateTaskStatus(
     @Param('id') id: string,
